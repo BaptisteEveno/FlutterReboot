@@ -12,6 +12,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int counter = 0;
 
+  final TextEditingController nameController = TextEditingController();
+
   void increment() {
     setState(() {
       counter++;
@@ -37,18 +39,28 @@ class _HomePageState extends State<HomePage> {
               onPressed: increment,
               child: const Text("Incrémenter"),
             ),
-            const SizedBox(height: 16),
+            SizedBox(
+              width: 250,
+              child: TextField(
+                controller: nameController,
+                decoration: const InputDecoration(
+                  labelText: "Entre ton nom",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ),
             ElevatedButton(
               onPressed: () {
+                final String name = nameController.text;
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        const DetailsPage(name: "Baptiste Eveno"),
+                    builder: (context) => DetailsPage(name: name),
                   ),
                 );
               },
-              child: const Text("Aller à la page Détails"),
+              child: const Text("Envoyer vers Détails"),
             ),
 
             ElevatedButton(
