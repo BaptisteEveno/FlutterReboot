@@ -38,17 +38,19 @@ class _HomePageState extends State<HomePage> {
               child: const Text("Incrémenter"),
             ),
             const SizedBox(height: 16),
-            ElevatedButton(onPressed: reset, child: const Text("Reset")),
-            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const DetailsPage()),
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        const DetailsPage(name: "Baptiste Eveno"),
+                  ),
                 );
               },
               child: const Text("Aller à la page Détails"),
             ),
+
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
